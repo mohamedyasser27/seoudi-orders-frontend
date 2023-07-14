@@ -2,9 +2,9 @@ import { type Order } from "../types/Order";
 
 interface Result {
   name: string;
-  value: BigInteger;
+  value: number;
 }
-let allOrders: Array<Order> = null;
+let allOrders!: Array<Order>;
 
 function getNumberOfOrders(): Result {
   return { name: "number of orders", value: allOrders.length };
@@ -23,17 +23,19 @@ function getAverageOrderTotal(): Result {
   return {
     name: "Average Price of Orders",
     value:
-      getTotalRevenue(allOrders).value / getNumberOfOrders(allOrders).value,
+      getTotalRevenue().value / getNumberOfOrders().value,
   };
 }
 
 function getLargestRevenueOrder(): Result {
-  const largestOrder = allOrders.reduce((largestOrder, currentOrder) => {
-    if (currentOrder.order_total > largestOrder.order_total) {
-      return currentOrder;
-    }
-    return largestOrder;
-  });
+  const largestOrder = allOrders.reduce(
+    (largestOrder: Order, currentOrder: Order) => {
+      if (currentOrder.order_total > largestOrder.order_total) {
+        return currentOrder;
+      }
+      return largestOrder;
+    },
+  );
   return { name: "largest Revenue Order", value: largestOrder.order_total };
 }
 
@@ -46,4 +48,4 @@ function getAllStatistics(recievedOrders: Array<Order>): Array<Result> {
     getAverageOrderTotal(),
   ];
 }
-export { Result, getAllStatistics };
+export {type Result, getAllStatistics };

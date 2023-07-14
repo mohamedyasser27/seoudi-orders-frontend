@@ -5,11 +5,9 @@ import { fetchOrdersData } from "../utils/fetchOrders";
 import { getAllStatistics, type Result } from "@/utils/statistics";
 const statistics: Ref<Array<Result>> = ref([]);
 onMounted(async () => {
-  try {
-    const data = await fetchOrdersData();
+  const data = await fetchOrdersData();
+  if (!data.hasOwnProperty("errorMsg")) {
     statistics.value = getAllStatistics(data);
-  } catch (error) {
-    console.error(error);
   }
 });
 </script>
@@ -42,7 +40,10 @@ onMounted(async () => {
       </tbody>
     </table>
   </div>
-  <NoDataFound v-else="statistics.length == 0"></NoDataFound>
+  <NoDataFound
+    :error-msg="'No Data Found'"
+    v-else="statistics.length == 0"
+  ></NoDataFound>
 </template>
 
 <style scoped></style>

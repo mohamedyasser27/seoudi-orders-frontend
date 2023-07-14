@@ -13,8 +13,11 @@ onMounted(async () => {
       fetchOrdersData(),
       fetchColumnNames(),
     ]);
-    allOrders.value = data;
-    columnNames.value = metaData;
+    console.log(data);
+    if (!data.hasOwnProperty("msg")) {
+      allOrders.value = data;
+      columnNames.value = metaData;
+    }
   } catch (error) {
     console.error(error);
   }
@@ -49,7 +52,7 @@ onMounted(async () => {
       </tbody>
     </table>
   </div>
-  <NoDataFound class="" v-else></NoDataFound>
+  <NoDataFound :error-msg="'No Data Found'" class="" v-else></NoDataFound>
 </template>
 
 <style scoped></style>

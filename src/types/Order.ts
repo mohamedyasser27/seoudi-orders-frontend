@@ -8,4 +8,4 @@ interface Order {
   order_tax: number;
 }
 
-export { Order };
+export {type Order };
