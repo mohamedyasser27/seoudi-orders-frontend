@@ -1,16 +1,14 @@
 import { type Order } from "../types/Order";
+import { type Statistic } from "../types/Statistic";
 
-interface Result {
-  name: string;
-  value: number;
-}
+
 let allOrders!: Array<Order>;
 
-function getNumberOfOrders(): Result {
+function getNumberOfOrders(): Statistic {
   return { name: "number of orders", value: allOrders.length };
 }
 
-function getTotalRevenue(): Result {
+function getTotalRevenue(): Statistic {
   return {
     name: "Total Price of Orders",
     value: allOrders.reduce((totalPrice, currentOrder) => {
@@ -19,7 +17,7 @@ function getTotalRevenue(): Result {
   };
 }
 
-function getAverageOrderTotal(): Result {
+function getAverageOrderTotal(): Statistic {
   return {
     name: "Average Price of Orders",
     value:
@@ -27,7 +25,7 @@ function getAverageOrderTotal(): Result {
   };
 }
 
-function getLargestRevenueOrder(): Result {
+function getLargestRevenueOrder(): Statistic {
   const largestOrder = allOrders.reduce(
     (largestOrder: Order, currentOrder: Order) => {
       if (currentOrder.order_total > largestOrder.order_total) {
@@ -39,7 +37,7 @@ function getLargestRevenueOrder(): Result {
   return { name: "largest Revenue Order", value: largestOrder.order_total };
 }
 
-function getAllStatistics(recievedOrders: Array<Order>): Array<Result> {
+function getAllStatistics(recievedOrders: Array<Order>): Array<Statistic> {
   allOrders = recievedOrders;
   return [
     getNumberOfOrders(),
@@ -48,4 +46,4 @@ function getAllStatistics(recievedOrders: Array<Order>): Array<Result> {
     getAverageOrderTotal(),
   ];
 }
-export {type Result, getAllStatistics };
+export {type Statistic, getAllStatistics };

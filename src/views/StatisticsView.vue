@@ -2,8 +2,8 @@
 import { onMounted, ref, type Ref } from "vue";
 import NoDataFound from "../components/NoDataFound.vue";
 import { fetchOrdersData } from "../utils/fetchOrders";
-import { getAllStatistics, type Result } from "@/utils/statistics";
-const statistics: Ref<Array<Result>> = ref([]);
+import { getAllStatistics, type Statistic } from "@/utils/getStatistics";
+const statistics: Ref<Array<Statistic>> = ref([]);
 onMounted(async () => {
   const data = await fetchOrdersData();
   if (!data.hasOwnProperty("errorMsg")) {
@@ -47,3 +47,4 @@ onMounted(async () => {
 </template>
 
 <style scoped></style>
+@/utils/getStatistics
