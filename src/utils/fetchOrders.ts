@@ -1,7 +1,15 @@
-const fetchOrders =async function () {
-    const response = await fetch("http://localhost:3000/read");
-    const data = await response.json();
-    return data;
+async function fetchResource(uri: string) {
+  const response = await fetch(uri);
+  const data = await response.json();
+  return data;
+}
+
+const fetchOrdersData = async function () {
+  return await fetchResource("http://localhost:3000/orders");
 };
 
-export default fetchOrders;
+const fetchColumnNames = async function () {
+  return await fetchResource("http://localhost:3000/orderInfo");
+};
+
+export { fetchColumnNames, fetchOrdersData };

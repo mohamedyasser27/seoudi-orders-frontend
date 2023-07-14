@@ -1,4 +1,4 @@
-export { interface Order {
+interface Order {
   id: number;
   order_number: string;
   order_date: Date;
@@ -7,4 +7,5 @@ export { interface Order {
   order_total: number;
   order_tax: number;
 }
-}
+
+export { Order };

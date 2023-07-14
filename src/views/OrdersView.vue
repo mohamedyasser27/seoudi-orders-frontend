@@ -2,14 +2,17 @@
 import { onMounted, ref, type Ref } from "vue";
 import { type Order } from "../types/Order";
 import NoDataFound from "../components/NoDataFound.vue";
-import fetchOrders from "../utils/fetchOrders";
+import { fetchOrdersData, fetchColumnNames } from "../utils/fetchOrders";
 
 const allOrders: Ref<Array<Order>> = ref([]);
-const columnNames: Ref<Array<String>> = ref([]);
+const columnNames: Ref<Array<string>> = ref([]);
 
 onMounted(async () => {
   try {
-    const [data, metaData] = await fetchOrders();
+    const [data, metaData] = await Promise.all([
+      fetchOrdersData(),
+      fetchColumnNames(),
+    ]);
     allOrders.value = data;
     columnNames.value = metaData;
   } catch (error) {
@@ -37,11 +40,11 @@ onMounted(async () => {
       <tbody>
         <tr class="hover:bg-gray-50" v-for="order in allOrders">
           <td
-          v-for="(orderPropertyName) in order"
+            v-for="orderPropertyName in order"
             class="px-1 py-2 text-[.8rem] lg:px-4 lg:text-base"
           >
-        {{ orderPropertyName }}
-        </td>
+            {{ orderPropertyName }}
+          </td>
         </tr>
       </tbody>
     </table>
