@@ -6,7 +6,7 @@ async function fetchResource(uri: string) {
 }
 
 const fetchOrdersData = async function () {
-  return await fetchResource(uri + "");
+  return await fetchResource(uri + "orders");
 };
 
 const fetchColumnNames = async function () {

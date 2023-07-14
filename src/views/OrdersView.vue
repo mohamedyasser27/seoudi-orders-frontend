@@ -45,7 +45,6 @@ onMounted(async () => {
             v-for="(orderPropertyName, key) in order"
             class="px-1 py-2 text-[.8rem] lg:px-4 lg:text-base"
           >
-            {{ console.log() }}
             {{
               key === "order_date"
                 ? new Date(String(orderPropertyName)).toLocaleDateString()
