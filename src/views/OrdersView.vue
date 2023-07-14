@@ -13,11 +13,10 @@ onMounted(async () => {
       fetchOrdersData(),
       fetchColumnNames(),
     ]);
-    console.log(data);
-    if (!data.hasOwnProperty("msg")) {
-      allOrders.value = data;
-      columnNames.value = metaData;
-    }
+
+
+    allOrders.value = data;
+    columnNames.value = metaData;
   } catch (error) {
     console.error(error);
   }
@@ -36,17 +35,22 @@ onMounted(async () => {
             v-for="columnName in columnNames"
             class="border-b border-gray-300 bg-gray-200 px-1 py-2 text-left text-[.8rem] lg:px-4 lg:text-base"
           >
-            {{ columnName }}
+            {{ columnName.split("_").join(" ") }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr class="hover:bg-gray-50" v-for="order in allOrders">
           <td
-            v-for="orderPropertyName in order"
+            v-for="(orderPropertyName, key) in order"
             class="px-1 py-2 text-[.8rem] lg:px-4 lg:text-base"
           >
-            {{ orderPropertyName }}
+            {{ console.log() }}
+            {{
+              key === "order_date"
+                ? new Date(String(orderPropertyName)).toLocaleDateString()
+                : orderPropertyName
+            }}
           </td>
         </tr>
       </tbody>
