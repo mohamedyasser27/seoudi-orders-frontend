@@ -51,7 +51,10 @@ onMounted(async () => {
         </tr>
       </thead>
       <tbody>
-        <tr class="hover:bg-gray-50" v-for="order in allOrders">
+        <tr
+          class="transition-colors duration-100 hover:bg-slate-500 hover:text-slate-50"
+          v-for="order in allOrders"
+        >
           <td
             v-for="(columnValue, columnName) in order"
             class="px-1 py-2 text-[.7rem] md:text-[.8rem] lg:px-4 lg:text-base"
