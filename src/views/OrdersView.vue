@@ -22,7 +22,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="max-w-5xl rounded-lg bg-gray-100 p-3 shadow-lg"
+    class="max-w-5xl rounded-lg bg-gray-100 p-0 shadow-lg lg:p-3"
     v-if="allOrders.length != 0"
   >
     <table class="w-full table-auto" aria-label="Orders Table">
@@ -32,10 +32,10 @@ onMounted(async () => {
             v-for="columnName in columnNames"
             :class="`${
               currentSort == columnName && 'text-red-700'
-            }  border-b border-gray-300 bg-gray-200 px-1 py-2 text-left text-[.7rem] md:text-[.8rem] lg:px-4 lg:text-base`"
+            }  border-b border-gray-300 bg-gray-200 px-1 py-2 text-left text-[.6rem] md:text-[.8rem] lg:px-4 lg:text-base`"
           >
             <button
-              class="break-words"
+              class="flex flex-wrap items-center justify-center gap-1"
               @click="
                 () => {
                   fetchOrdersData(columnName).then((data) => {
@@ -46,6 +46,14 @@ onMounted(async () => {
               "
             >
               {{ columnName.split("_").join(" ") }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="h-[15px] w-[15px] fill-current lg:h-[24px] lg:w-[24px]"
+              >
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
+              </svg>
             </button>
           </th>
         </tr>
@@ -57,7 +65,7 @@ onMounted(async () => {
         >
           <td
             v-for="(columnValue, columnName) in order"
-            class="px-1 py-2 text-[.7rem] md:text-[.8rem] lg:px-4 lg:text-base"
+            class="px-1 py-2 text-[.7rem] md:text-[.6rem] lg:px-4 lg:text-base"
           >
             {{
               columnName === "order_date"
