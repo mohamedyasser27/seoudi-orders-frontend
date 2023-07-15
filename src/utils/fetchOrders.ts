@@ -5,7 +5,7 @@ async function fetchResource(uri: string) {
   return data;
 }
 
-const fetchOrdersData = async function (name?) {
+const fetchOrdersData = async function (name?: string) {
   return await fetchResource(`${uri}orders/${name ? name : ""}`);
 };
 

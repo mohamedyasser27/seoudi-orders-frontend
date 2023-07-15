@@ -30,10 +30,12 @@ onMounted(async () => {
         <tr>
           <th
             v-for="columnName in columnNames"
-            :class="` ${currentSort == columnName && 'text-red-700'} 
-               border-b border-gray-300 bg-gray-200 px-1 py-2 text-left text-[.8rem] lg:px-4 lg:text-base`"
+            :class="`${
+              currentSort == columnName && 'text-red-700'
+            }  border-b border-gray-300 bg-gray-200 px-1 py-2 text-left text-[.7rem] md:text-[.8rem] lg:px-4 lg:text-base`"
           >
             <button
+              class="break-words"
               @click="
                 () => {
                   fetchOrdersData(columnName).then((data) => {
@@ -43,7 +45,7 @@ onMounted(async () => {
                 }
               "
             >
-              {{ columnName }}
+              {{ columnName.split("_").join(" ") }}
             </button>
           </th>
         </tr>
@@ -52,7 +54,7 @@ onMounted(async () => {
         <tr class="hover:bg-gray-50" v-for="order in allOrders">
           <td
             v-for="(columnValue, columnName) in order"
-            class="px-1 py-2 text-[.8rem] lg:px-4 lg:text-base"
+            class="px-1 py-2 text-[.7rem] md:text-[.8rem] lg:px-4 lg:text-base"
           >
             {{
               columnName === "order_date"
