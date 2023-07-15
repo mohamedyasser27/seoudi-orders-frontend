@@ -22,7 +22,7 @@ onMounted(async () => {
 
 <template>
   <div
-    class="max-w-5xl rounded-lg bg-gray-100 p-4 shadow-lg"
+    class="max-w-5xl rounded-lg bg-gray-100 p-3 shadow-lg"
     v-if="allOrders.length != 0"
   >
     <table class="w-full table-auto" aria-label="Orders Table">
