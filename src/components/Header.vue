@@ -24,4 +24,3 @@ const navItems = [
   </header>
 </template>
 
-<style scoped></style>

@@ -1,5 +1,5 @@
-import { type Order } from "../types/Order";
-import { type Statistic } from "../types/Statistic";
+import { type Order } from "@/types/Order";
+import { type Statistic } from "@/types/Statistic";
 
 
 let allOrders!: Array<Order>;

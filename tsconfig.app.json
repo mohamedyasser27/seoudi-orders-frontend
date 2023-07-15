@@ -7,7 +7,12 @@
     "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@router/*": ["./src/router/*"],
+      "@types/*": ["./src/types/*"],
+      "@views/*": ["./src/views/*"]
     }
   }
 }

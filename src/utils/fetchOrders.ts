@@ -1,4 +1,4 @@
-const uri = "https://orders-seoudi.onrender.com/";
+const uri = "http://localhost:3000/";
 async function fetchResource(uri: string) {
   const response = await fetch(uri);
   const data = await response.json();
