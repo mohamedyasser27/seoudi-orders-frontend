@@ -9,8 +9,4 @@ const fetchOrdersData = async function (name?: string) {
   return await fetchResource(`${uri}orders/${name ? name : ""}`);
 };
 
-const fetchColumnNames = async function () {
-  return await fetchResource(uri + "orderProperties");
-};
-
-export { fetchColumnNames, fetchOrdersData };
+export { fetchOrdersData };
